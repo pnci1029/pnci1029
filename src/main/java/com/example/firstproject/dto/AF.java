@@ -8,6 +8,7 @@ import lombok.ToString;
 @ToString
 public class AF {
 
+    private Long ID;
     private String title;
     private String content;
 
@@ -16,6 +17,6 @@ public class AF {
 
 
     public Article toEntity() {
-        return new Article(null, title, content);
+        return new Article(ID, title, content);
     }
 }
