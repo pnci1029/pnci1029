@@ -38,7 +38,6 @@ public class comment {
             throw new IllegalArgumentException("댓글 생성 실패! 댓글의 ID와 목록의 ID가 다릅니다.");
         }
 
-
         //엔티티 생성 및 반환
         return new comment(
                 dto.getID(),
