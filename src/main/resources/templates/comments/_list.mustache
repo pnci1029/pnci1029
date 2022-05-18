@@ -16,6 +16,10 @@
             data-bs-nickname="{{nickname}}"
             data-bs-body="{{body}}"
             data-bs-article_ID="{{articleID}}">수정</button>
+           <!--댓글 삭제버튼 -->
+            <button type="button"
+                    class="btn bt-sm  btn-outline-danger comment-delete-btn"
+                    data-comment-ID="{{ID}}">삭제</button>
         </div>
     </div>
 
@@ -68,7 +72,7 @@
     </div>
 </div>
 
-<!-- 모달 이벤트 처리 자바스크립트 입력 -->
+<!-- 모달 이벤트 처리 자바스크립트 입력(댓글 수정) -->
 <script>
 {
     //모달 요소 선택
@@ -133,6 +137,49 @@
 
 
 }
+
+
+</script>
+
+<!-- 댓글 삭제를 위한 자바스크립트 -->
+<script>
+{
+    // 삭제 버튼 선택
+    const commentdeletebtns=document.querySelectorAll(".comment-delete-btn");
+
+
+    // 삭제 버튼 이벤트 처리
+    commentdeletebtns.forEach(btn  => {
+    //모든 버튼의 클릭 이벤트 처리
+    btn .addEventListener("click",(event ) => {
+    //  이벤트 발생 요소 선택
+       const commentdeletebtn = event.srcElement;
+    // 삭제  댓글 가져오기
+       const commentID = commentdeletebtn.getAttribute("data-comment-ID");
+       console.log( "삭제버튼 클릭" + commentID+ "번 댓글");
+
+    // 삭제 api 호출 및 삭제
+        const url = `/api/comments/${commentID}`;
+        fetch(url, {
+         method:  "DELETE"
+         }).then(response => {
+
+    //댓글 삭제 실패 처리
+        if(!response.ok){
+            alert("댓글 삭제 실패");
+            return;
+        }
+
+    // 삭제 성공 시 댓글 아티클에서 지움
+        const target =document.querySelector(`#comments-${commentID}`);
+        target.remove();
+
+         });
+       });
+    });
+}
+
+
 
 
 </script>
