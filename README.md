@@ -7,7 +7,7 @@
 
 ### Article
 
-- [선착순 이벤트 시스템을 구현하는 방법]([https://your-article-url](https://chhong.tistory.com/16))
+- [선착순 이벤트 시스템을 구현하는 방법](https://chhong.tistory.com/16)
 - [동시성과 병렬성](https://chhong.tistory.com/11)
 
 <!--
